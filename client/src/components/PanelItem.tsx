@@ -28,7 +28,7 @@ export function PanelItem(props: { index: number, isVisible:boolean, stack: ITec
     <GridItem
       borderRight={borderRightSetting}
       borderBottom={borderBottomSetting}
-      key={props.index} w="full" py={'2em'} rounded="sm" fontSize={'4xl'}
+      key={props.index} w="full" py={'1.5em'} rounded="sm" fontSize={'2xl'}
       color={textColor}>
       <Center>{props.stack.name}</Center>
     </GridItem>

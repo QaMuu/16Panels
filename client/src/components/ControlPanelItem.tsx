@@ -2,7 +2,7 @@ import {Center, GridItem, Button, VStack} from "@yamada-ui/react";
 import {ITechInfo} from "../datas/TechStack.ts";
 import {useEffect, useState} from "react";
 
-export function ControlPanelItem(props: { index: number, isVisible:boolean, stack: ITechInfo }) {
+export function ControlPanelItem(props: { index: number, isVisible:boolean, stack: ITechInfo, clickHandler: Function }) {
   const [borderRightSetting, setBorderRightSetting] = useState('4px solid #8d63e7');
   const [borderBottomSetting, setBorderBottomSetting] = useState('4px solid #8d63e7');
   const [textColor, setTextColor] = useState('#FFFFFF');
@@ -25,6 +25,7 @@ export function ControlPanelItem(props: { index: number, isVisible:boolean, stac
 
   function handlerButtonClick() {
     setIsOpen(!isOpen);
+    props.clickHandler(props.index, !isOpen);
   }
 
   return (

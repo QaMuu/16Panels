@@ -77,7 +77,7 @@ export function Home() {
             Full Close
           </Button>
 
-          <Link to={'/panels'} target={'_blank'}>panels</Link>
+          <Link to={'/panels'}>panels</Link>
 
         </HStack>
 

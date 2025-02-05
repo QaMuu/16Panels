@@ -1,14 +1,14 @@
 import { Routes, Route } from 'react-router-dom';
 
-import {Home} from './pages/Home';
+import {ControlPanels} from './pages/ControlPanels.tsx';
 import {ViewerPanels} from "./pages/ViewerPanels.tsx";
 
 function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/panels" element={<ViewerPanels />} />
+      <Route path="/" element={<ViewerPanels />} />
+      <Route path="/control" element={<ControlPanels />} />
     </Routes>
   )
 }

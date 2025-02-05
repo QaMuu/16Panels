@@ -1,8 +1,9 @@
 
 import {ITechInfo, TechStack} from "../datas/TechStack.ts";
-import {Box, Grid, For} from "@yamada-ui/react";
+import {Box, Grid, For, Button} from "@yamada-ui/react";
 import {PanelItem} from "../components/PanelItem.tsx";
 import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 interface IPanelInfo {
   isVisible: boolean;
@@ -12,6 +13,7 @@ interface IPanelInfo {
 const aryTechStacks: ITechInfo[] = TechStack;
 
 export function ViewerPanels() {
+  const navigate = useNavigate();
   const [aryPanelInfo, setAryPanelInfo] = useState<IPanelInfo[]>([]);
 
   useEffect(() => {
@@ -24,15 +26,24 @@ export function ViewerPanels() {
     setAryPanelInfo(_techStack);
   }, []);
 
+  function handlerGoToControlButtonClick() {
+    navigate('/control');
+  }
+
   return (
     <Box bg={'#030f15'} color={'#FFFFFF'} p={4}>
-      <Grid templateColumns="repeat(6, 6fr)" border={'4px solid #8d63e7'} rounded={36}>
+      <Grid templateColumns="repeat(6, 6fr)" border={'4px solid #8d63e7'} rounded={36} mb={6}>
         <For each={aryPanelInfo}>
           {(info:IPanelInfo, index:number) => (
             <PanelItem index={index} isVisible={info.isVisible} stack={info.stack}/>
           )}
         </For>
       </Grid>
+
+      <Button onClick={handlerGoToControlButtonClick}>
+        Go to Control View
+      </Button>
+
     </Box>
   );
 }

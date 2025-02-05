@@ -12,7 +12,7 @@ interface IPanelInfo {
 
 const aryTechStacks: ITechInfo[] = TechStack;
 
-export function Home() {
+export function ControlPanels() {
   const [aryPanelInfo, setAryPanelInfo] = useState<IPanelInfo[]>([]);
 
   useEffect(() => {
@@ -77,7 +77,9 @@ export function Home() {
             Full Close
           </Button>
 
-          <Link to={'/panels'}>panels</Link>
+          <Link to={'/'} target={'_blank'}>
+            viewer
+          </Link>
 
         </HStack>
 

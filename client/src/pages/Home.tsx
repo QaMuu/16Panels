@@ -1,8 +1,9 @@
 
 import {ITechInfo, TechStack} from "../datas/TechStack.ts";
-import {Box, Grid, For, Button, HStack, Link} from "@yamada-ui/react";
+import {Box, Grid, For, Button, HStack} from "@yamada-ui/react";
 import {ControlPanelItem} from "../components/ControlPanelItem.tsx";
 import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 
 interface IPanelInfo {
   isVisible: boolean;
@@ -76,9 +77,7 @@ export function Home() {
             Full Close
           </Button>
 
-          <Link href={'./viewer-panels'} target={"_blank"}>
-            Open Viewer Panels
-          </Link>
+          <Link to={'/panels'} target={'_blank'}>panels</Link>
 
         </HStack>
 

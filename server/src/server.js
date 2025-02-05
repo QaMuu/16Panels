@@ -1,3 +1,4 @@
+require('dotenv').config({ path: './.env' });
 const express = require('express');
 const cors = require('cors');
 const { resolve } = require('node:path');
@@ -18,7 +19,7 @@ function setupServer() {
 }
 
 const app = setupServer();
-const PORT = 3000;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
   console.log(`Web server is running  PORT:${PORT}/`);

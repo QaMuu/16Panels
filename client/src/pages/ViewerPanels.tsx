@@ -4,6 +4,7 @@ import {Box, Grid, For, Button} from "@yamada-ui/react";
 import {PanelItem} from "../components/PanelItem.tsx";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import io from 'socket.io-client';
 
 interface IPanelInfo {
   isVisible: boolean;
@@ -16,14 +17,31 @@ export function ViewerPanels() {
   const navigate = useNavigate();
   const [aryPanelInfo, setAryPanelInfo] = useState<IPanelInfo[]>([]);
 
+
   useEffect(() => {
     const _techStack:IPanelInfo[] = [];
 
     for (let i = 0; i < aryTechStacks.length; i++) {
-      _techStack.push({isVisible: true, stack: aryTechStacks[i]});
+      _techStack.push({isVisible: false, stack: aryTechStacks[i]});
     }
 
     setAryPanelInfo(_techStack);
+
+    const socket = io(import.meta.env.VITE_SOCKET_URL as string); // バックエンドに接続
+
+    socket.on('connect', () => {
+      console.log('Connected to server');
+    });
+
+    socket.on('panelStatusUpdate', (status) => {
+      console.log('panelStatusUpdate : ', status);
+      setAryPanelInfo(status as IPanelInfo[]);
+    });
+
+    return () => {
+      socket.disconnect(); // コンポーネントUnmount時に切断
+    };
+
   }, []);
 
   function handlerGoToControlButtonClick() {

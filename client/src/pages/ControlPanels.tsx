@@ -4,6 +4,7 @@ import {Box, Grid, For, Button, HStack} from "@yamada-ui/react";
 import {ControlPanelItem} from "../components/ControlPanelItem.tsx";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import io from 'socket.io-client';
 
 interface IPanelInfo {
   isVisible: boolean;
@@ -14,6 +15,7 @@ const aryTechStacks: ITechInfo[] = TechStack;
 
 export function ControlPanels() {
   const [aryPanelInfo, setAryPanelInfo] = useState<IPanelInfo[]>([]);
+  const socket = io(import.meta.env.VITE_SOCKET_URL as string); // バックエンドに接続
 
   useEffect(() => {
     const _techStack:IPanelInfo[] = [];
@@ -23,6 +25,10 @@ export function ControlPanels() {
     }
 
     setAryPanelInfo(_techStack);
+
+    return () => {
+      socket.disconnect(); // コンポーネントUnmount時に切断
+    };
   }, []);
 
   useEffect(() => {
@@ -37,6 +43,7 @@ export function ControlPanels() {
     }
 
     setAryPanelInfo(_techStack);
+    socket.emit('panelStatusChange', _techStack);
   }
 
   function handlerFullCloseClick() {
@@ -47,6 +54,7 @@ export function ControlPanels() {
     }
 
     setAryPanelInfo(_techStack);
+    socket.emit('panelStatusChange', _techStack);
   }
 
   function handlerPanelItemClick(index:number, isVisible:boolean) {
@@ -61,6 +69,7 @@ export function ControlPanels() {
     }
 
     setAryPanelInfo(_techStack);
+    socket.emit('panelStatusChange', _techStack);
   }
 
   return (
@@ -78,7 +87,7 @@ export function ControlPanels() {
           </Button>
 
           <Link to={'/'} target={'_blank'}>
-            viewer
+            Open the viewer in another tab
           </Link>
 
         </HStack>

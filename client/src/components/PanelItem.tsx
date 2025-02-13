@@ -18,7 +18,7 @@ export function PanelItem(props: { index: number, isVisible:boolean, stack: ITec
     }
 
     if (props.isVisible) {
-      setTextColor(props.stack.language ? '#FFFFFF' : '#932a2a');
+      setTextColor(props.stack.language ? '#FFFFFF' : '#FF0000');
     } else {
       setTextColor('#030f15');
     }

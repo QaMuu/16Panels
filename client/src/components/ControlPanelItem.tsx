@@ -19,7 +19,7 @@ export function ControlPanelItem(props: { index: number, isVisible:boolean, stac
       setBorderBottomSetting('');
     }
 
-    setTextColor(props.stack.language ? '#FFFFFF' : '#932a2a');
+    setTextColor(props.stack.language ? '#FFFFFF' : '#FF0000');
 
   }, [props.isVisible]);
 

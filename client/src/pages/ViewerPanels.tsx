@@ -1,6 +1,6 @@
 
 import {ITechInfo, TechStack} from "../datas/TechStack.ts";
-import {Box, Grid, For, Button} from "@yamada-ui/react";
+import {Box, Grid, For, Link} from "@yamada-ui/react";
 import {PanelItem} from "../components/PanelItem.tsx";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
@@ -58,9 +58,9 @@ export function ViewerPanels() {
         </For>
       </Grid>
 
-      <Button onClick={handlerGoToControlButtonClick}>
+      <Link onClick={handlerGoToControlButtonClick} color={'#83183e'} textDecoration={'underline'}>
         Go to Control View
-      </Button>
+      </Link>
 
     </Box>
   );

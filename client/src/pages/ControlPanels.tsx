@@ -92,7 +92,7 @@ export function ControlPanels() {
 
         </HStack>
 
-        <Grid templateColumns="repeat(6, 6fr)" ml={"2px"} mr={"2px"} border={'4px solid #8d63e7'} rounded={2}>
+        <Grid templateColumns="repeat(6, 6fr)" ml={"2px"} mr={"2px"} border={'4px solid #0e233d'} rounded={2}>
           <For each={aryPanelInfo}>
             {(info:IPanelInfo, index:number) => (
               <ControlPanelItem index={index} isVisible={info.isVisible} stack={info.stack} clickHandler={handlerPanelItemClick}/>

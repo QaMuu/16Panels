@@ -3,8 +3,8 @@ import {ITechInfo} from "../datas/TechStack.ts";
 import {useEffect, useState} from "react";
 
 export function ControlPanelItem(props: { index: number, isVisible:boolean, stack: ITechInfo, clickHandler: Function }) {
-  const [borderRightSetting, setBorderRightSetting] = useState('4px solid #8d63e7');
-  const [borderBottomSetting, setBorderBottomSetting] = useState('4px solid #8d63e7');
+  const [borderRightSetting, setBorderRightSetting] = useState('4px solid #0e233d');
+  const [borderBottomSetting, setBorderBottomSetting] = useState('4px solid #0e233d');
   const [textColor, setTextColor] = useState('#FFFFFF');
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,7 +19,7 @@ export function ControlPanelItem(props: { index: number, isVisible:boolean, stac
       setBorderBottomSetting('');
     }
 
-    setTextColor(props.stack.language ? '#FFFFFF' : '#FF0000');
+    setTextColor(props.stack.language ? '#FFFFFF' : '#ccaa03');
 
   }, [props.isVisible]);
 
@@ -35,7 +35,7 @@ export function ControlPanelItem(props: { index: number, isVisible:boolean, stac
       key={props.index} w="full" py={'2em'} rounded="sm" fontSize={'2xl'}
       color={textColor}
       as={Button}
-      bg={isOpen ? '#2d0b3b' : '#030f15'}
+      bg={isOpen ? '#0f2e56' : '#030f15'}
       onClick={handlerButtonClick}
     >
       <VStack gap={0}>

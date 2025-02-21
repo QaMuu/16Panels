@@ -50,7 +50,7 @@ export function ViewerPanels() {
 
   return (
     <Box bg={'#030f15'} color={'#FFFFFF'} p={4}>
-      <Grid templateColumns="repeat(6, 6fr)" border={'4px solid #8d63e7'} rounded={36} mb={6}>
+      <Grid templateColumns="repeat(6, 6fr)" border={'4px solid #0e233d'} rounded={36} mb={6}>
         <For each={aryPanelInfo}>
           {(info:IPanelInfo, index:number) => (
             <PanelItem index={index} isVisible={info.isVisible} stack={info.stack}/>
